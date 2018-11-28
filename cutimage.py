@@ -19,11 +19,10 @@ def rotate_bound(image, x1,y1,x2,y2,x3,y3,x4,y4):
     #第三个参数：变换后的图像大小
     return cv2.warpAffine(image,M,(w,h))
  
-path = "data\mtwi_2018_train\image_train"
 
-image_path = "./t2/T1._WBXtXdXXXXXXXX_!!0-item_pic.jpg.jpg"
+image_path = "./mtwi_2018_train/image_train/T1._WBXtXdXXXXXXXX_!!0-item_pic.jpg.jpg"
 image = cv2.imread(image_path)
-text_path = "./t2/T1._WBXtXdXXXXXXXX_!!0-item_pic.jpg.jpg.txt"
+text_path = "./mtwi_2018_train/txt_train/T1._WBXtXdXXXXXXXX_!!0-item_pic.jpg.txt"
 with open(text_path,encoding="utf-8") as f:
     lines = f.readlines()
 (x1,y1,x2,y2,x3,y3,x4,y4,text)=lines[0].split(",")
@@ -46,8 +45,8 @@ cropImg = rotated[(newy1):(newy2),(newx1):(newx2)]
 cv2.imshow("imput", image)
 cv2.imshow("output", rotated)
 
-cv2.imwrite("t2/rotated.jpg", rotated)
+cv2.imwrite("mtwi_2018_train/test/rotated.jpg", rotated)
 cv2.imshow("cropImg", cropImg)
-cv2.imwrite("t2/cropImg.jpg", cropImg)
+cv2.imwrite("mtwi_2018_train/test/cropImg.jpg", cropImg)
 cv2.waitKey(0)
 
