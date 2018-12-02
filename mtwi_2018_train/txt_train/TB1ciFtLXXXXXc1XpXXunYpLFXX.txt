@@ -1,0 +1,15 @@
+212.5,0.0,212.5,14.0,490.5,14.0,490.5,0.0,Loveismorethanaworditsavssomuch.
+254.5,15.0,254.5,32.0,448.5,32.0,448.5,15.0,WhenIseethesefourletters,
+249.5,242.0,244.5,267.0,475.5,268.0,475.5,246.0,tss521.taobao.com
+205.5,214.0,205.5,243.0,516.5,243.0,516.5,213.0,GREATRICEBEAR
+283.5,197.0,283.5,215.0,418.5,215.0,418.5,199.0,Ihaven'tgotaclue.
+271.5,181.0,271.5,199.0,434.5,199.0,434.5,181.0,Whythisworddoesthis,
+279.5,163.0,279.5,179.0,425.5,179.0,425.5,163.0,Ifellinlovewithyou.
+260.5,148.0,260.5,163.0,447.5,163.0,447.5,148.0,Thisisonlyhappenedsince
+269.5,133.0,269.5,146.0,435.5,146.0,435.5,133.0,Ialmostfeelyourtouch.
+256.5,115.0,256.5,131.0,451.5,131.0,451.5,115.0,WhenIseethesefourletters,
+212.5,97.0,212.5,114.0,490.5,114.0,490.5,97.0,Loveismorethanaworditsavssomuch.
+284.5,82.0,284.5,97.0,418.5,97.0,418.5,82.0,Ihaven'tgotaclue.
+270.5,66.0,270.5,81.0,435.5,81.0,435.5,66.0,Whythisworddoesthis,
+188.5,49.0,188.5,62.0,519.5,62.0,519.5,49.0,ThisisonlyhappenedsinceIfellinlovewithyou.
+269.5,46.0,267.5,35.0,435.5,35.0,435.5,47.0,Ialmostfeelyourtouch.

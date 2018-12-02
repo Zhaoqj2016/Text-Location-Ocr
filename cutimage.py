@@ -22,11 +22,11 @@ def rotate_bound(image, x1,y1,x2,y2,x3,y3,x4,y4):
     return cv2.warpAffine(image,M,(w*2,h))
  
 
-img_dir = "mtwi_2018_train/image_train"
+img_dir = "mtwi_2018_train/error_image"
 txt_dir = "mtwi_2018_train/txt_train"
 res_dir = "mtwi_2018_train/train_image"
 if os.path.exists(res_dir):
-    shutil.rmtree(res_dir)
+   shutil.rmtree(res_dir)
 os.makedirs(res_dir)
 img_name = os.listdir(img_dir)  # 列出文件夹下所有的目录与文件
 for file in img_name:
@@ -106,7 +106,7 @@ for file in img_name:
                 #cv2.waitKey(0)
     except Exception as e:
         print("error file=",file,"e=",e)
-        with open("errlog.txt","a", encoding="utf-8") as f:
+        with open("errlog2.txt","a", encoding="utf-8") as f:
             f.write(file+"\n")
         
 
