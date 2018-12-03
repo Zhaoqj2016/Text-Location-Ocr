@@ -54,9 +54,8 @@ def draw_boxes(img, image_name, boxes, scale):
 
 if __name__ == '__main__':
 
-    if os.path.exists("mtwi_2018_task3_test/results/"):
-        shutil.rmtree("mtwi_2018_task3_test/results/")
-    os.makedirs("mtwi_2018_task3_test/results/")
+    if not os.path.exists("mtwi_2018_task3_test/results/"):
+        os.makedirs("mtwi_2018_task3_test/results/")
 
     cfg_from_file('ctpn/text.yml')
 
