@@ -30,7 +30,9 @@ for file in img_name:
                 newx1,newy1,newx2,newy2 = util.clip_coordinates(x1,y1,x2,y2,x3,y3,x4,y4)
                 rotated = util.rotate_bound(image,x1,y1,x2,y2,x3,y3,x4,y4) #将图片翻转
                 cropImg = rotated[int(newy1):int(newy2),int(newx1):int(newx2)]#裁剪
-                util.create_lable_img_dir(text, res_dir, cropImg)
+                cv2.imshow("cropImg", cropImg)
+                cv2.waitKey(0)
+                # util.create_lable_img_dir(text, res_dir, cropImg)
                 count = count + 1
     except Exception as e:
         print("error file=",file,"e=",e)
