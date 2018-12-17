@@ -32,8 +32,8 @@ for file in img_name:
                 cropImg = rotated[int(newy1):int(newy2),int(newx1):int(newx2)]#裁剪
                 # cv2.imshow("cropImg", cropImg)
                 # cv2.waitKey(0)
-                # util.create_lable_img_dir(text, res_dir, cropImg)
-                util.create_dir_save_four_word_img_file(text, res_dir, cropImg)
+                util.create_lable_img_dir(text, res_dir, cropImg)
+                # util.create_dir_save_four_word_img_file(text, res_dir, cropImg)
                 count = count + 1
                 print(count)
     except Exception as e:

@@ -100,6 +100,12 @@ def create_dir_lable(father_dir_path, dir_name):
     mkdir(path)
     return path
 
+def is_chinese(word):
+    for ch in word:
+        if '\u4e00' <= ch <= '\u9fff':
+            return True
+    return False
+
 def create_lable_img_dir(string, father_dir_path, img):
     img_shape = img.shape
     img_l = img_shape[1]
@@ -112,7 +118,17 @@ def create_lable_img_dir(string, father_dir_path, img):
     print(img_l, img_h, string, size, step)
     # print([x for x in string], len(string))
     for c in string :
+        is_chinese_flag = is_chinese(c)
+        if is_chinese_flag:
+            start_l = max(start_l - 1 , 0)
+            end_l = min(end_l + 1, img_l)
+
         cropImg = img[:,int(start_l):int(end_l)]#裁剪
+
+        if is_chinese_flag:
+            cv2.imshow("cropImg", cropImg)
+            cv2.waitKey(0)
+
         start_l += step
         end_l += step
 
@@ -120,6 +136,8 @@ def create_lable_img_dir(string, father_dir_path, img):
         save_img_file_name = path + "/" + str(random.randint(0,10000)) + ".jpg"
         print(save_img_file_name)
         cv2.imwrite(save_img_file_name, cropImg)
+
+
 
 # 一个大的截图一个目录 并生成每个字的标签
 def create_dir_save_four_word_img_file(string, father_dir_path, img):
@@ -131,4 +149,9 @@ def create_dir_save_four_word_img_file(string, father_dir_path, img):
     return
 
 if __name__ == "__main__":
+    # tmp = is_chinese("h")
+    # print(tmp)
+
+    # print(min(12 - 1,15))
+    # print(max(12,15))
     pass    
