@@ -98,7 +98,6 @@ def mkdir(path):
 def create_dir_lable(father_dir_path, dir_name):
     path = father_dir_path + "/" + dir_name
     mkdir(path)
-    print(path)
     return path
 
 def create_lable_img_dir(string, father_dir_path, img):
@@ -121,6 +120,15 @@ def create_lable_img_dir(string, father_dir_path, img):
         save_img_file_name = path + "/" + str(random.randint(0,10000)) + ".jpg"
         print(save_img_file_name)
         cv2.imwrite(save_img_file_name, cropImg)
+
+# 一个大的截图一个目录 并生成每个字的标签
+def create_dir_save_four_word_img_file(string, father_dir_path, img):
+    string = string.replace("\n", "")
+    path = create_dir_lable(father_dir_path, string)
+    save_img_file_name = path  +"/" + string + ".jpg"
+    print(save_img_file_name)
+    cv2.imwrite(save_img_file_name, img)
+    return
 
 if __name__ == "__main__":
     pass    
