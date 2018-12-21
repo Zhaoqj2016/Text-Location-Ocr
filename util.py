@@ -191,9 +191,9 @@ def word_coordinates(img, string, father_dir_path):
     end_l = int(step)
 
     print(img_l, img_h, string, size, step)
-    # print([x for x in string], len(string))
 
-    file_path = father_dir_path + "/" + string + "/" + string + ".txt"
+    file_path = father_dir_path + "/" + string + "/" + string + ".box"
+
     with open(file_path,"w", encoding="utf-8") as f:
         for c in string :
             f.write(str(c) + " " + str(start_l) + " 0 " + str(end_l) + " " + str(img_h)+ " 0" +"\n")
