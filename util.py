@@ -106,6 +106,14 @@ def is_chinese(word):
             return True
     return False
 
+def img_enlarge(img, enlarge_rate):
+    new_x = img.shape[1] * enlarge_rate
+    new_y = img.shape[0] * enlarge_rate
+    res_img = cv2.resize(img, (new_x, new_y), interpolation=cv2.INTER_AREA)
+    # cv2.imshow("enlarge", res_img)
+    # cv2.waitKey(0)
+    return res_img
+
 def create_lable_img_dir(string, father_dir_path, img):
     img_shape = img.shape
     img_l = img_shape[1]
@@ -137,16 +145,78 @@ def create_lable_img_dir(string, father_dir_path, img):
         print(save_img_file_name)
         cv2.imwrite(save_img_file_name, cropImg)
 
+def enlarge_create_lable_img_dir(string, father_dir_path, img):
+    img = img_enlarge(img, 10)
+    img_shape = img.shape
+    img_l = img_shape[1]
+    img_h = img_shape[0]
+    size = len(string) - 1
+    step = img_l / size
+    start_l = 0
+    end_l = int(step)
+
+    rate = float(float(img_l / (size)) / 10)
+    print("rate :::", rate)
+
+    print(img_l, img_h, string, size, step)
+    # print([x for x in string], len(string))
+    for c in string :
+        is_chinese_flag = is_chinese(c)
+        is_chinese_flag = False
+        if is_chinese_flag:
+            start_l = max(start_l - rate , 0)
+            end_l = min(end_l + rate, img_l)
+
+        cropImg = img[:,int(start_l):int(end_l)]#裁剪
+
+        if is_chinese_flag:
+            cv2.imshow("cropImg", cropImg)
+            cv2.waitKey(0)
+
+        start_l += step
+        end_l += step
+
+        path = create_dir_lable(father_dir_path, str(c))
+        save_img_file_name = path + "/" + str(random.randint(0,10000)) + ".jpg"
+        print(save_img_file_name)
+        cv2.imwrite(save_img_file_name, cropImg)
+
+def word_coordinates(img, string, father_dir_path):
+    img_shape = img.shape
+    img_l = img_shape[1]
+    img_h = img_shape[0]
+    size = len(string) - 1
+    step = img_l / size
+    start_l = 0
+    end_l = int(step)
+
+    print(img_l, img_h, string, size, step)
+    # print([x for x in string], len(string))
+
+    file_path = father_dir_path + "/" + string + "/" + string + ".txt"
+    with open(file_path,"w", encoding="utf-8") as f:
+        for c in string :
+            f.write(str(c) + " " + str(start_l) + " 0 " + str(end_l) + " " + str(img_h)+ " 0" +"\n")
+            # cropImg = img[:,int(start_l):int(end_l)]#裁剪
+            start_l += step
+            end_l += step
+        f.flush()
+        f.close()
 
 
 # 一个大的截图一个目录 并生成每个字的标签
 def create_dir_save_four_word_img_file(string, father_dir_path, img):
+    img = img_enlarge(img, 10)
     string = string.replace("\n", "")
     path = create_dir_lable(father_dir_path, string)
     save_img_file_name = path  +"/" + string + ".jpg"
     print(save_img_file_name)
     cv2.imwrite(save_img_file_name, img)
+
+    word_coordinates(img, string, father_dir_path)
     return
+
+
 
 if __name__ == "__main__":
     # tmp = is_chinese("h")
@@ -154,4 +224,6 @@ if __name__ == "__main__":
 
     # print(min(12 - 1,15))
     # print(max(12,15))
+
+    print(int(4/100))
     pass    
